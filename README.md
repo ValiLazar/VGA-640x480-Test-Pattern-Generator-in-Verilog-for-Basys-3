@@ -1,4 +1,5 @@
 Generator de Modele de Test VGA în Verilog pentru Basys 3
+
 📝 Descriere Generală
 Acest proiect demonstrează cum se generează un model de test static pentru un afișaj VGA, folosind o placă FPGA Digilent Basys 3. Proiectul este scris în Verilog și produce un semnal video la o rezoluție de 640x480 pixeli.
 
