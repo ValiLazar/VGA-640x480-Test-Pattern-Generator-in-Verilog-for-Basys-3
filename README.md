@@ -1,83 +1,83 @@
-Generator de Modele de Test VGA în Verilog pentru Basys 3
+VGA Test Pattern Generator in Verilog for Basys 3
 
-📝 Descriere Generală
-Acest proiect demonstrează cum se generează un model de test static pentru un afișaj VGA, folosind o placă FPGA Digilent Basys 3. Proiectul este scris în Verilog și produce un semnal video la o rezoluție de 640x480 pixeli.
+📝 General Description
 
-Scopul este de a afișa o imagine compusă dintr-o varietate de forme geometrice și bare de culori, pentru a testa și valida funcționalitatea unui controler VGA. Imaginea generată este împărțită într-o matrice de 4x3 celule, fiecare conținând un element grafic distinct.
+This project demonstrates how to generate a static test pattern for a VGA display using a Digilent Basys 3 FPGA board. The project is written in Verilog and produces a video signal at a 640x480 pixel resolution.
 
-🖼️ Imagine de Ieșire
-Imaginea de mai jos arată exact ce produce acest proiect pe un monitor conectat la placa Basys 3.
+The goal is to display an image composed of various geometric shapes and color bars to test and validate the functionality of a VGA controller. The generated image is divided into a 4x3 grid, with each cell containing a distinct graphic element.
 
-✨ Caracteristici Principale
+🖼️ Output Image
 
-Controler VGA 640x480: Generează semnale de sincronizare Hsync și Vsync pentru rezoluția 640x480 @ 60Hz.
+The image below shows the exact output this project produces on a monitor connected to the Basys 3 board.
 
-Imagine Statică: Proiectul afișează o imagine statică, ideală pentru testarea culorilor și a geometriei.
+(Here you can insert a screenshot of your VGA output)
 
+✨ Main Features
 
-Matrice de Test: Ecranul este împărțit într-o grilă de 4 coloane și 3 rânduri pentru a organiza elementele de test.
+640x480 VGA Controller: Generates Hsync and Vsync signals for the 640x480 @ 60Hz resolution standard.
 
-Forme Geometrice: Desenează procedural diverse forme, inclusiv:
+Static Image: The project displays a fixed image, which is ideal for testing colors and geometry.
 
-Cercuri 
+Test Matrix: The screen is divided into a 4-column, 3-row grid to organize the test elements.
 
-O semilună (realizată prin suprapunerea a două cercuri) 
+Geometric Shapes: Procedurally draws various shapes, including:
 
-Un semicerc 
+Circles
 
-Un pătrat 
+A crescent moon (achieved by overlapping two circles)
 
-Un dreptunghi 
+A semicircle
 
-Un triunghi 
+A square
 
+A rectangle
 
-Bare de Culori: Generează bare de culori primare (Roșu, Verde, Albastru) și culori secundare (Cyan, Magenta, Galben) pentru a testa gama de culori a afișajului.
+A triangle
 
-📁 Structura Proiectului
-Proiectul este alcătuit din următoarele fișiere cheie:
+Color Bars: Generates primary (Red, Green, Blue) and secondary (Cyan, Magenta, Yellow) color bars to test the display's color gamut.
+
+📁 Project Structure
+
+The project is composed of the following key files:
 
 1. vga_top.v
-Acesta este modulul de nivel superior care integrează întregul design.
+This is the top-level module that integrates the entire design.
 
-Instanțiază un 
+Instantiates a Clocking Wizard to generate the 25 MHz clock required for 640x480 VGA timing.
 
-Clocking Wizard pentru a genera ceasul de 25 MHz necesar pentru temporizarea VGA de 640x480.
+Instantiates the vga_640X400 controller to get the synchronization signals.
 
-Instanțiază controlerul vga_640X400 pentru a obține semnalele de sincronizare.
-
-Conține logica pentru a desena fiecare formă și bară de culoare în funcție de coordonatele curente ale pixelilor (h_count_wire, v_count_wire).
+Contains the logic to draw each shape and color bar based on the current pixel coordinates (h_count_wire, v_count_wire).
 
 2. vga_640X400.v
-Acest sub-modul este responsabil exclusiv pentru generarea temporizărilor VGA.
+This sub-module is responsible exclusively for generating the VGA timings.
 
-Implementează contoare pentru a genera impulsurile de sincronizare orizontală și verticală.
+Implements counters to generate the horizontal and vertical sync pulses.
 
-Definește parametrii pentru front porch, back porch și lățimea pulsului, conform standardului VGA 640x480.
+Defines parameters for the front porch, back porch, and pulse width according to the 640x480 standard.
 
 3. Basys3_Master.xdc
-Acesta este fișierul de constrângeri esențial care mapează porturile din 
+This is the essential constraints file that maps the ports from vga_top.v to the physical pins of the Basys 3 board.
 
-vga_top.v la pinii fizici ai plăcii Basys 3.
+Assigns the input clock to pin W5.
 
-Asignează ceasul de intrare la pinul W5.
+Assigns the reset button to pin U18.
 
-Asignează butonul de reset la pinul U18.
-
-Asignează ieșirile de culoare (
-
-vgaRed, vgaGreen, vgaBlue) și de sincronizare (Hsync, Vsync) la pinii conectorului VGA.
+Assigns the color (vgaRed, vgaGreen, vgaBlue) and sync (Hsync, Vsync) outputs to the VGA connector pins.
 
 4. vga_test.v
-Un modul de simulare (testbench) folosit pentru a verifica funcționalitatea modulului 
+A simulation module (testbench) used to verify the functionality of the vga_640X400 module in a Verilog simulator before implementing on hardware.
 
-vga_640X400 într-un simulator Verilog, înainte de implementarea pe hardware.
+🛠️ Requirements
+Required Hardware
+A Digilent Basys 3 development board
 
-🛠️ Hardware și Software
-Hardware Necesar
-O placă de dezvoltare Digilent Basys 3
+A monitor with a VGA input
 
-Un monitor cu intrare VGA
+A VGA Cable
+
+Required Software
+Xilinx Vivado Design Suite
 
 Un cablu VGA
 
