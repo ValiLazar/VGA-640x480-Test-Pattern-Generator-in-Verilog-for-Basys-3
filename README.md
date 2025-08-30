@@ -84,3 +84,7 @@ Un cablu VGA
 Software Necesar
 Xilinx Vivado Design Suite: Proiectul utilizează un fișier de constrângeri (.xdc) și un IP de ceas (Clocking Wizard), specifice acestui software.           
 ![img3](https://github.com/user-attachments/assets/e10b2e94-e924-4287-90c9-dbaaa807ef73)
+
+Simulation:
+<img width="1275" height="678" alt="image" src="https://github.com/user-attachments/assets/07640a6c-7cae-4610-8f4b-e868492ead0e" />
+
